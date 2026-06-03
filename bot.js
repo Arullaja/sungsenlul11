@@ -214,12 +214,6 @@ async function handlePesan(client, from, body) {
 // ============================================================
 console.log('🚀 Memulai Bot WhatsApp Rental Mobil...');
 
-// Hapus sesi lama agar QR muncul fresh
-const { execSync } = require('child_process');
-try {
-  // token dipertahankan agar tidak perlu scan ulang
-
-
 venom.create(
   'rental-bot',
   (base64Qr) => {
@@ -270,11 +264,6 @@ venom.create(
 
 }).catch((err) => {
   console.error('❌ Gagal start bot:', err);
-  // Hapus token lalu restart
-  try {
-    const { execSync } = require('child_process');
-    // token dipertahankan agar tidak perlu scan ulang
-    console.log('🗑️ Token dihapus, restart dalam 5 detik...');
-  } catch(e) {}
-  setTimeout(() => process.exit(1), 5000);
+  console.log('🔄 Menunggu QR baru...');
 });
+  
