@@ -224,12 +224,12 @@ venom.create(
   (statusSession) => {
     console.log('Status:', statusSession);
   },
-  {
-  headless: 'new',
+ {
+  headless: true,
   devtools: false,
   useChrome: true,
   debug: false,
-  logQR: false,
+  logQR: true,
   autoClose: 0,
 
   browserArgs: [
@@ -244,7 +244,7 @@ venom.create(
   ],
 
   executablePath: '/usr/bin/chromium',
-  folderNameToken: 'tokens'
+  folderNameToken: '/app/tokens'
 }
 ).then((client) => {
   console.log('✅ Bot WhatsApp Rental Mobil AKTIF!');
