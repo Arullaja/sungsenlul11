@@ -1,3 +1,5 @@
+process.env.PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true';
+process.env.PUPPETEER_EXECUTABLE_PATH = '/usr/bin/chromium';
 const venom = require('venom-bot');
 const QRCode = require('qrcode');
 const express = require('express');
@@ -223,28 +225,34 @@ venom.create(
   'rental-bot',
   (base64Qr) => {
     // base64Qr sudah dalam format data URL
-    lastQR = base64Qr.replace('data:image/png;base64,', '');
+    lastQR = base64Qr;
     console.log('📱 QR tersedia! Buka /qr di browser.');
   },
   (statusSession) => {
     console.log('Status:', statusSession);
   },
   {
-    headless: true,
-    devtools: false,
-    useChrome: true,
-    debug: false,
-    logQR: false,
-    browserArgs: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--single-process',
-    ],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
-    folderNameToken: '/app/tokens',
-  }
+  headless: 'new',
+  devtools: false,
+  useChrome: true,
+  debug: false,
+  logQR: false,
+  autoClose: 0,
+
+  browserArgs: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-gpu',
+    '--disable-software-rasterizer',
+    '--no-zygote',
+    '--single-process',
+    '--no-first-run'
+  ],
+
+  executablePath: '/usr/bin/chromium',
+  folderNameToken: 'tokens'
+}
 ).then((client) => {
   console.log('✅ Bot WhatsApp Rental Mobil AKTIF!');
   console.log(`🏢 ${CONFIG.namaPerusahaan}`);
