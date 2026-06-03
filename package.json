@@ -1,0 +1,17 @@
+{
+  "name": "wa-rental-bot",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp Rental Mobil",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "venom-bot": "^5.0.5",
+    "qrcode": "^1.5.3",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
