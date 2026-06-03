@@ -218,8 +218,7 @@ console.log('🚀 Memulai Bot WhatsApp Rental Mobil...');
 const { execSync } = require('child_process');
 try {
   // token dipertahankan agar tidak perlu scan ulang
-  console.log('🗑️ Sesi lama dihapus, QR akan muncul baru.');
-} catch(e) {}
+
 
 venom.create(
   'rental-bot',
